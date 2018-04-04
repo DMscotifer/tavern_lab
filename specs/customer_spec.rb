@@ -8,7 +8,7 @@ require_relative("../tavern.rb")
 class CustomerTest < MiniTest::Test
 
   def setup()
-    @customer1 = Customer.new("Homer", 50)
+    @customer1 = Customer.new("Homer", 50, 42)
     @drink1 = Drink.new("Duff", 3)
     @drink2 = Drink.new("Corona", 4)
     @drink3 = Drink.new("Tennents", 3)

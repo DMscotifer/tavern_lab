@@ -8,7 +8,7 @@ require_relative("../tavern.rb")
 class TavernTest < MiniTest::Test
 
   def setup()
-    @customer1 = Customer.new("Homer", 50)
+    @customer1 = Customer.new("Homer", 50, 42)
     @drink1 = Drink.new("Duff", 3)
     @drink2 = Drink.new("Corona", 4)
     @drink3 = Drink.new("Tennents", 3)
@@ -47,10 +47,16 @@ class TavernTest < MiniTest::Test
   end
 
   def test_customer_buys_drink__increase_till()
-    @tavern1.customer_buys_drink("Duff")
+    customer = @customer1
+    @tavern1.customer_buys_drink("Duff", customer)
     assert_equal(203, @tavern1.till)
   end
 
+  def test_check_customer_age__run_if_over_18()
+    customer = @customer1
+    @tavern1.customer_buys_drink("Duff", customer)
+    assert_equal(203, @tavern1.till)
+  end
 
 
 end

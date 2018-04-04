@@ -27,9 +27,11 @@ class Tavern
     end
   end
 
-  def customer_buys_drink(drink_choice)
-    cost = get_drink_price(drink_choice)
-    @till += cost
+  def customer_buys_drink(drink_choice, customer)
+    if customer.check_customer_age == true
+      cost = get_drink_price(drink_choice)
+      @till += cost
+    end
   end
 
 
