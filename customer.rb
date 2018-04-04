@@ -6,11 +6,7 @@ class Customer
   end
 
   def buys_drink(drink_choice, tavern)
-    # if find_drink_by_name(drink_choice) != nil
     cost = tavern.get_drink_price(drink_choice)
-      @wallet -= cost
-      # tavern.customer_buys_drink(drink_choice)
-    # end
+    @wallet -= cost
   end
-
 end
