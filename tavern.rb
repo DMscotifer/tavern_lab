@@ -27,10 +27,21 @@ class Tavern
     end
   end
 
+  def get_drink_alcohol_level(drink_name)
+    for drink in drinks
+      if drink.name == drink_name
+        return drink.alcohol_level
+      end
+    end
+  end
+
+
   def customer_buys_drink(drink_choice, customer)
     if customer.check_customer_age == true
       cost = get_drink_price(drink_choice)
       @till += cost
+      add_drunk = get_drink_alcohol_level(drink_choice)
+      customer.drunkenness += add_drunk
     end
   end
 

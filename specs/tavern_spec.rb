@@ -8,10 +8,10 @@ require_relative("../tavern.rb")
 class TavernTest < MiniTest::Test
 
   def setup()
-    @customer1 = Customer.new("Homer", 50, 42)
-    @drink1 = Drink.new("Duff", 3)
-    @drink2 = Drink.new("Corona", 4)
-    @drink3 = Drink.new("Tennents", 3)
+    @customer1 = Customer.new("Homer", 50, 42, 0)
+    @drink1 = Drink.new("Duff", 3, 3)
+    @drink2 = Drink.new("Corona", 4, 2)
+    @drink3 = Drink.new("Tennents", 3, 2)
     @drinks_menu = [@drink1, @drink2, @drink3]
     # @drinks_menu = ["Duff", "Corona", "Tennents"]
     @tavern1 = Tavern.new("Mo's Tavern", 200, @drinks_menu)
@@ -58,5 +58,19 @@ class TavernTest < MiniTest::Test
     assert_equal(203, @tavern1.till)
   end
 
+  def test_customer_buys_drink__add_alcohol_level()
+    customer = @customer1
+    @tavern1.customer_buys_drink("Duff", customer)
+    assert_equal(3, @customer1.drunkenness)
+  end
+
+  
+
+  # def test_customer_buys_drink__refused_service
+  #   customer = @customer1
+  #   @customer.drunkenness = 8
+  #   @tavern1.customer_buys_drink("Duff", customer)
+  #   assert_equal(8, @customer1.drunkenness)
+  # end
 
 end
